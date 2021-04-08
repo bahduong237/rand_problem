@@ -20,9 +20,7 @@ for i in sale_data.keys():
     for m in sale_data[i].keys():
             sum_day[m] += sale_data[i][m]
 #collect max per day
-for i in sum_day.keys():
-    if sum_day[i] >= max_day:
-        max_day = sum_day[i]
+    max_day = max(sum_day.values())
 print("{}".format(sale_data))
 print('max amount {}  on day {}'.format(max_day, list(sum_day.keys())[list(sum_day.values()).index(max_day)]))
 # collect max per session
