@@ -1,0 +1,34 @@
+'''
+2 by 7 sale number by day and session
+find max sale per day
+find max sale per session
+'''
+import random
+sale_data = {'AM':{'M':0,'T':0,'W':0,'Th':0,'F':0,'Su':0,'Sa':0},
+             'PM':{'M':0,'T':0,'W':0,'Th':0,'F':0,'Su':0,'Sa':0}}
+
+sum_day = {'M':0,'T':0,'W':0,'Th':0,'F':0,'Su':0,'Sa':0}
+max_day = sum_day['M']
+max_session = sale_data['AM']['M']
+session =''
+#initialize data
+for i in sale_data.keys():
+    for m in sale_data[i].keys():
+        sale_data[i][m] = random.randrange(0,9999999,1)
+#collect data by day
+for i in sale_data.keys():
+    for m in sale_data[i].keys():
+            sum_day[m] += sale_data[i][m]
+#collect max per day
+for i in sum_day.keys():
+    if sum_day[i] >= max_day:
+        max_day = sum_day[i]
+print("{}".format(sale_data))
+print('max amount {}  on day {}'.format(max_day, list(sum_day.keys())[list(sum_day.values()).index(max_day)]))
+# collect max per session
+for i in sale_data.keys():
+    for v in sale_data[i].keys():
+        if sale_data[i][v] >= max_session:
+            max_session = sale_data[i][v]
+            session = str(i) + '-'+ str(v)
+print('max session {} on session {} '.format(max_session, session))
